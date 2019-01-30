@@ -1,6 +1,5 @@
 ---
 title: "Peer-graded Assignment 1: R Markdown and Leaflet"
-runtime: shiny
 author: "Anastasia Simmet (geb. Morozova)"  
 date: "January 30, 2019"
 output: html_document
@@ -10,7 +9,7 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-This R Markdown document is made interactive using Shiny package and features a map created with Leaflet. This map marks the places that are precious to me. There are four cities that I consider home. These cities are marked with the circle markers on the map. The size of the markers represents how many years I lived in a particular city and the color represents the stage of my life. :) In the popup of every marker you can see the Coat of arms of a particular city, the name of the city with the link to the Wikipedia article about this city. Enjoy! 
+This R Markdown document features a map created with Leaflet. This map marks the places that are precious to me. There are four cities that I consider home. These cities are marked with the circle markers on the map. The size of the markers represents how many years I lived in a particular city and the color represents the stage of my life. :) In the popup of every marker you can see the Coat of arms of a particular city, the name of the city with the link to the Wikipedia article about this city. Enjoy! 
 
 ## The MAP
 
@@ -18,7 +17,7 @@ This R Markdown document is made interactive using Shiny package and features a 
 library(leaflet)
 
 # dataframe with cities
-cities <- data.frame(name = c("Nadym", "Moscow", "Konstanz", "Wangen im Allg‰u"),
+cities <- data.frame(name = c("Nadym", "Moscow", "Konstanz", "Wangen im Allg√§u"),
                         years = c(18, 5, 3, 1),
                         col = c("red", "blue","blue", "green" ),
                         lat = c(65.53333,  55.751244, 47.6744, 47.6939),
@@ -29,7 +28,7 @@ wiki<-c(
   "<a href='https://en.wikipedia.org/wiki/Nadym'>Nadym</a>",
   "<a href='https://en.wikipedia.org/wiki/Moscow'>Moscow</a>",
   "<a href='https://de.wikipedia.org/wiki/Konstanz'>Konstanz</a>",
-  "<a href='https://en.wikipedia.org/wiki/Wangen_im_Allg%C3%A4u'>Wangen im Allg‰u</a>"
+  "<a href='https://en.wikipedia.org/wiki/Wangen_im_Allg%C3%A4u'>Wangen im Allg√§u</a>"
 )
 
 # URLs with images of the Coats of arms
@@ -45,7 +44,3 @@ cities %>%
   addCircleMarkers(weight = 1, radius = sqrt(cities$years)*4,color = cities$col, popup = paste0(wiki, "<img src = ", c(file1,file2,file3,file4), ">")) %>%
   addLegend(labels = c("Childhood","Study","Work"), colors = c("red", "blue","green"))
 ```
-
-
-
-
