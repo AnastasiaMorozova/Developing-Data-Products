@@ -1,0 +1,83 @@
+---
+title: "Exploratory graphs with Plotly"
+author: "Anastasia Simmet (geb. Morozova)"
+date: "6 February 2019"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Introduction
+
+This presentation features creation of the interactive plots using Plotly as a part of the exploratory data analysis of the dataset **ToothGrowth** in R.  
+
+## Procedures to be done
+
+- We load the library with the dataset of interest using the following command 
+```{r, echo = TRUE, eval=FALSE, message=FALSE}
+library(datasets)
+data(ToothGrowth)
+```
+- We look into the structure of the dataset
+```{r, echo = TRUE, eval=FALSE, message=FALSE}
+library(dplyr)
+str(ToothGrowth)
+ToothGrowth$dose<-as.factor(ToothGrowth$dose)
+summary(ToothGrowth)
+```
+##
+- We use Plotly to perform exploratory data analysis
+```{r, echo = TRUE, eval=FALSE, message=FALSE}
+library(plotly)
+# histogram of the tooth length
+plot_ly(x=ToothGrowth$len, type="histogram")
+# boxplots of the tooth length by the type of supplements
+plot1<-ggplot(data=ToothGrowth,aes(x = supp, y = len))+
+      geom_boxplot(aes(fill=supp))
+(gg<-ggplotly(plot1))
+# boxplots of the tooth length by the type of supplements and the dose
+plot2<-ggplot(data=ToothGrowth,aes(x = supp, y = len))+
+      geom_boxplot(aes(fill=supp)) + facet_wrap(~ dose)
+(gg<-ggplotly(plot2))
+```
+## Structure of the dataset
+```{r, echo = TRUE, message=FALSE}
+library(dplyr)
+str(ToothGrowth)
+ToothGrowth$dose<-as.factor(ToothGrowth$dose)
+summary(ToothGrowth)
+```
+
+## The histogram 
+```{r, echo = TRUE, message=FALSE}
+library(plotly)
+# histogram of the tooth length
+plot_ly(x=ToothGrowth$len, type="histogram")
+```
+
+## The boxplot by the type of supplement 
+```{r, echo = FALSE, message=FALSE}
+library(plotly)
+# boxplots of the tooth length by the type of supplements
+plot1<-ggplot(data=ToothGrowth,aes(x = supp, y = len))+
+      geom_boxplot(aes(fill=supp))
+(gg<-ggplotly(plot1))
+```
+
+## The boxplot by the type of supplement and the dose
+```{r, echo = FALSE, message=FALSE}
+library(plotly)
+# boxplots of the tooth length by the type of supplements and the dose
+plot2<-ggplot(data=ToothGrowth,aes(x = supp, y = len))+
+      geom_boxplot(aes(fill=supp)) + facet_wrap(~ dose)
+(gg<-ggplotly(plot2))
+```
+
+##
+
+Thank you for the review!
+
+
+
