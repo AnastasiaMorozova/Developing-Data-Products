@@ -11,3 +11,6 @@ The rubric contains the following two questions:
 
 1. Does the web page feature a date and is this date less than two months before the date that you're grading this assignment?
 2. Does the web page feature an interactive map that appears to have been created with Leaflet?
+
+
+Link to the interactive map: [Leaflet map](https://rpubs.com/frostik92/748727).
